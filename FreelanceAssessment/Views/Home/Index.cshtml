@@ -1,0 +1,131 @@
+﻿@section scripts {
+    @Scripts.Render("~/bundles/app")
+}
+
+<div class="page-header">
+    <h1>Freelancers</h1>
+</div>
+
+<div class="row">
+
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Freelances</h2>
+            </div>
+            <div class="panel-body">
+                <ul class="list-unstyled" data-bind="foreach: freelances">
+                    <li>
+                        <strong><span>Username: </span></strong>: <span data-bind="text: username"></span>
+                        <br />
+                        <small><a href="#" data-bind="click: $parent.getFreelanceDetail">Details</a></small>
+                        <small><a href="#" data-bind="click: $parent.removeFreelance">Remove</a></small>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="alert alert-danger" data-bind="visible: error"><p data-bind="text: error"></p></div>
+    </div>
+
+    <!-- ko if:detail() -->
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Detail</h2>
+            </div>
+            <table class="table">
+                <tr><td>Username</td><td data-bind="text: detail().username"></td></tr>
+                <tr><td>Email</td><td data-bind="text: detail().email"></td></tr>
+                <tr><td>Phone Number</td><td data-bind="text: detail().phone"></td></tr>
+                <tr><td>Skillsets</td><td data-bind="text: detail().skillsets"></td></tr>
+                <tr><td>Hobby</td><td data-bind="text: detail().hobby"></td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- /ko -->
+    @* add *@
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Add Freelance</h2>
+            </div>
+
+            <div class="panel-body">
+                <form class="form-horizontal" data-bind="submit: addFreelance">
+                    <div class="form-group" data-bind="with: newFreelance" style="display: grid;">
+                        <label for="inputUsername" class="col-sm-2 control-label">Username</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputUsername" data-bind="value:username" />
+                        </div>
+
+                        <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputEmail" data-bind="value:email" />
+                        </div>
+
+                        <label for="inputPhone" class="col-sm-2 control-label">Phone Number</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputPhone" data-bind="value:phone" />
+                        </div>
+
+                        <label for="inputSkillsets" class="col-sm-2 control-label">Skillsets</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputSkillsets" data-bind="value:skillsets" />
+                        </div>
+
+                        <label for="inputHobby" class="col-sm-2 control-label">Hobby</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputHobby" data-bind="value:hobby" />
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @* update *@
+    <!-- ko if:detail() -->
+    <div class="col-md-3" id="update-freelance">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Edit Freelance</h2>
+            </div>
+
+            <div class="panel-body">
+                <form class="form-horizontal" data-bind="with: detail">
+                    <div class="form-group" style="display: grid;">
+                        <label for="inputUsername" class="col-sm-2 control-label">Username</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputUsername" data-bind="value:username" />
+                        </div>
+
+                        <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputEmail" data-bind="value:email" />
+                        </div>
+
+                        <label for="inputPhone" class="col-sm-2 control-label">Phone Number</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputPhone" data-bind="value:phone" />
+                        </div>
+
+                        <label for="inputSkillsets" class="col-sm-2 control-label">Skillsets</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputSkillsets" data-bind="value:skillsets" />
+                        </div>
+
+                        <label for="inputHobby" class="col-sm-2 control-label">Hobby</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputHobby" data-bind="value:hobby" />
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-default" data-bind="click: $parent.updateFreelance">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /ko -->
+
+</div>
