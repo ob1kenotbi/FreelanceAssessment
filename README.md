@@ -31,5 +31,5 @@ This project is a list of freelancers. Such that they could have a directory of 
 
 ## Demo
 
-[link](https://freelanceassessment20230919041559.azurewebsites.net)
+[link](https://freelanceassessment2023092309461.azurewebsites.net/)
 
